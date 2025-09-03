@@ -93,7 +93,6 @@ git push -u origin main
 `git log remote/branch` see log from other branchy
 
 
-
 ## solo workflow
 1. Make changes to files
 2. `git add .` (or `git add <files>` if I only want to add specific files)
