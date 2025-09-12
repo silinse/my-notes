@@ -17,3 +17,12 @@ conversions(
 );
 // 2 4 6
 ```
+
+### how to define object
+```
+const fruit = {
+    name: "apple",
+    color: "red",
+}
+```
+
