@@ -18,7 +18,7 @@ conversions(
 // 2 4 6
 ```
 
-### how to define object
+### define object
 ```
 const fruit = {
     name: "apple",
@@ -26,3 +26,8 @@ const fruit = {
 }
 ```
 
+### fat arrow function
+```
+const add = (x, y) => {
+  return x + y;
+}
