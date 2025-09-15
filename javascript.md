@@ -47,7 +47,7 @@ for (let i = 0; i < 5; i++) {
 ```
 
 
-### for...in loop
+### for...in loop (used to loop over the keys of an object)
 ```
 let titan = {
   name: "Eren",
@@ -63,5 +63,22 @@ for (const key in titan) {
 // age: 19
 ```
 
+### for...of (loop over array)
+```
+let woods = ["oak", "pine", "maple"];
+for (let wood of woods) {
+  console.log(wood);
+}
+// prints:
+// oak
+// pine
+// maple
+```
 
-
+### destructing arrays
+```
+const nums = [1, 2, 3, 4, 5];
+const [a, b, ...restOfThem];
+// a == 1
+// b == 2
+// restofThem == [3, 4, 5]
