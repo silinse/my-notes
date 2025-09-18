@@ -82,3 +82,28 @@ const [a, b, ...restOfThem];
 // a == 1
 // b == 2
 // restofThem == [3, 4, 5]
+```
+
+
+### maps
+```
+const map = new Map();
+map.set("bertholdt", "shifter");
+map.set("reiner", "warrior");
+map.set("annie", "shifter");
+map.set("bertholdt", "colossal titan");
+console.log(map);
+// Map { 'bertholdt' => 'colossal titan', 'reiner' => 'warrior', 'annie' => 'shifter' }
+
+map.delete("annie");
+console.log(map);
+// Map { 'bertholdt' => 'colossal titan', 'reiner' => 'warrior' }
+```
+
+#### access keys and values of map
+```
+for (const [key, value] of myMap) {
+  console.log('Key:', key);      // prints the actual object
+  console.log('Value:', value);  // prints the value
+}
+```
