@@ -33,7 +33,6 @@ const add = (x, y) => {
 }
 ```
 
-
 ### for loop
 ```
 for (let i = 0; i < 5; i++) {
@@ -45,7 +44,6 @@ for (let i = 0; i < 5; i++) {
 // 3
 // 4
 ```
-
 
 ### for...in loop (used to loop over the keys of an object)
 ```
@@ -84,7 +82,6 @@ const [a, b, ...restOfThem];
 // restofThem == [3, 4, 5]
 ```
 
-
 ### maps
 ```
 const map = new Map();
@@ -107,3 +104,92 @@ for (const [key, value] of myMap) {
   console.log('Value:', value);  // prints the value
 }
 ```
+
+### setTimeout (async)
+```
+console.log("I print first");
+setTimeout(
+  () => console.log("I print third because I'm waiting 100 milliseconds"),
+  100,
+);
+console.log("I print second");
+
+// Output:
+// I print first
+// I print second
+// I print third because I'm waiting 100 milliseconds
+```
+
+### promises
+```
+const promise = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    if (getRandomBool()) {
+      resolve("resolved!");
+    } else {
+      reject("rejected!");
+    }
+  }, 1000);
+});
+
+function getRandomBool() {
+  return Math.random() < 0.5;
+}
+
+promise
+  .then((message) => {
+    console.log(`The promise finally ${message}`);
+  })
+  .catch((message) => {
+    console.log(`The promise finally ${message}`);
+  });
+
+// if the promise resolves, the output will be:
+// The promise finally resolved!
+
+// if the promise rejects, the output will be:
+// The promise finally rejected!
+```
+
+#### await vs .then
+```
+promise.then((message) => {
+  console.log(`Resolved with ${message}`);
+});
+
+const message = await promise;
+console.log(`Resolved with ${message}`);
+```
+
+When using await, if the promise is rejected, it will throw an error. That means we can use standard try/catch blocks to handle rejections.
+```
+try {
+  const message = await promise;
+  console.log(`Resolved with ${message}`);
+} catch (error) {
+  console.log(`Rejected with ${error}`);
+}
+```
+
+#### new promise() vs asynic
+```
+// new Promise
+function getPromiseForUserData() {
+  return new Promise((resolve) => {
+    fetchDataFromServer().then(function (user) {
+      resolve(user);
+    });
+  });
+}
+
+const promise = getPromiseForUserData();
+
+// await
+async function getPromiseForUserData() {
+  const user = await fetchDataFromServer();
+  return user;
+}
+
+const promise = getPromiseForUserData();
+```
+
