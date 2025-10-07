@@ -193,3 +193,52 @@ async function getPromiseForUserData() {
 const promise = getPromiseForUserData();
 ```
 
+### modules
+#### CommonJS 
+```
+// math.js (export)
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+
+module.exports = {
+  add,
+  subtract,
+};
+
+// main.js (import)
+const { add, subtract } = require("./math.js");
+
+console.log(add(1, 2)); // 3
+console.log(subtract(1, 2)); // -1
+```
+
+#### ES6
+```
+// math.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+
+// main.js
+import { add, subtract } from "./math.js";
+
+console.log(add(1, 2)); // 3
+console.log(subtract(1, 2)); // -1
+```
+
+### strict mode
+```
+// at the start of file
+"use strict";
+// your code here
+
+// of at the start of function
+function strictFunction() {
+  "use strict";
+  // your code here
+}
+
+
+// you only need "use strict"; at the top of non-es6 modules. ES6 modules are always in strict mode by default. That goes for the browser and Node.js
+```
+
+
