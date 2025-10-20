@@ -112,7 +112,7 @@ type Race = "elf" | "human" | "dwarf";
 type Hero = `Hero: ${Race} ${Class}`;
 // Hero: elf wizard | Hero: elf warrior | Hero: elf rogue | Hero: human wizard | Hero: human warrior | Hero: human rogue | Hero: dwarf wizard | Hero: dwarf warrior | Hero: dwarf rogue
 
-//You can also create types that enforce a simple pattern match. For example:
+// You can also create types that enforce a simple pattern match. For example:
 type logRecord = `${string}: ${number}`;
 // this is valid because it's a string followed by a colon and a number
 const criticalErr: logRecord = "CRITICAL: 69";
@@ -122,4 +122,62 @@ const criticalErr: logRecord = "CRITICAL: 92a";
 const criticalErr: logRecord = "92: CRITICAL";
 ```
 
+### array declaration
+```
+let arr: string[];
+arr = ["one", "two", "three"];
+```
 
+### arrays in function declarations
+```
+// These function declarations are the same:
+// Using bracket notation
+function assignLightsaberColors(name: string, colors: string[]): void {
+  // ...
+}
+// Using generic type parameter syntax
+function assignLightsaberColors(name: string, colors: Array<string>): void {
+  // ...
+}
+
+// You can also use either syntax when declaring variables:
+const colors: string[] = [
+  "blue",
+  "green",
+  "purple",
+  "red",
+  "orange",
+  "white",
+  "darksaber",
+];
+const midichlorianCounts: Array<number> = [
+  1000, 5000, 12000, 20000, 27000, 40000,
+];
+```
+
+### heterogeneous arrays
+```
+// TypeScript infers the type as (string | number)[]
+let lightsaberStyles = [1, 2, "double", "shoto"];
+
+function describe(style: string | number): string {
+  console.log(`Wield ${style} lightsaber`);
+}
+
+lightsaberStyles.forEach(describe);
+// Wield 1 lightsaber
+// Wield 2 lightsaber
+// Wield double lightsaber
+// Wield shoto lightsaber
+```
+
+# rest parameters (...)
+```
+function gatherParty(partyName: string, ...adventurers: string[]): string {
+  return `${partyName} consists of: ${adventurers.join(", ")}`;
+}
+
+const msg = gatherParty("The Fellowship", "Frodo", "Sam", "Gandalf");
+console.log(msg);
+// "The Fellowship consists of: Frodo, Sam, Gandalf"
+```
